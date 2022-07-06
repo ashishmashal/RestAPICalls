@@ -24,4 +24,9 @@ public class HelloRestApi {
     {
         return "Hello " + name + "!";
     }
+    @PostMapping("/hello")
+    public String sayHello(@RequestBody User user)
+    {
+        return "Hello " + user.getFirstName() + " "+  user.getLastName() + "!";
+    }
 }
