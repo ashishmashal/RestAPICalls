@@ -1,5 +1,6 @@
 package com.example.restapicalls.Contoller;
 
+import com.example.restapicalls.model.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -7,13 +8,19 @@ import org.springframework.web.bind.annotation.*;
 public class HelloRestApi {
 
     @RequestMapping(value= {"","/","/home"})
-    public String Print()
+    public String PrintSimple()
     {
         return "Hello From Bridgelabz";
     }
 
-    @RequestMapping(value = {"/query/{name}"}, method = RequestMethod.GET)
-    public String Print(@PathVariable String name)
+    @RequestMapping(value = {"/query"}, method = RequestMethod.GET)
+    public String sayHelloParam(@RequestParam(value = "name") String name)
+    {
+        return "Hello " + name + "!";
+    }
+
+    @RequestMapping("/query/{name}")
+    public String PrintPath(@PathVariable String name)
     {
         return "Hello " + name + "!";
     }
