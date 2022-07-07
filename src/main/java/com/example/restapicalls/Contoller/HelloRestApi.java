@@ -13,11 +13,11 @@ public class HelloRestApi {
         return "Hello From Bridgelabz";
     }
 
-    @RequestMapping(value = {"/query"}, method = RequestMethod.GET)
-    public String sayHelloParam(@RequestParam(value = "name") String name)
-    {
-        return "Hello " + name + "!";
-    }
+        @RequestMapping(value = {"/query"}, method = RequestMethod.GET)
+        public String sayHelloParam(@RequestParam(value = "name") String name)
+        {
+            return "Hello " + name + "!";
+        }
 
     @RequestMapping("/query/{name}")
     public String PrintPath(@PathVariable String name)
@@ -28,5 +28,10 @@ public class HelloRestApi {
     public String sayHello(@RequestBody User user)
     {
         return "Hello " + user.getFirstName() + " "+  user.getLastName() + "!";
+    }
+    @PutMapping("/put/{firstName}")
+    public String SayHelloPut(@PathVariable String firstName,@RequestParam(value = "lastName") String lastName)
+    {
+        return "Hello " + firstName + " " + lastName + "!";
     }
 }
